@@ -22,3 +22,9 @@ input[disabled]{
 
 .btn_add_attributes{padding: 0px 5px !important; margin-bottom: 5px !important;}
 .db_attributes{margin-bottom: 5px !important;}
+span.gms{
+	padding-top: 8px;
+    display: block;
+    float: left;
+    padding-left: 5px;
+}

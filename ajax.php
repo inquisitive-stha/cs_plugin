@@ -422,3 +422,46 @@ function doDeleteLabel()
     
     exit();
 }
+
+function doDownloadPDF()
+{
+
+    $zfile = COPYSHOP_ROOT.'zip/zipfile.zip';
+
+    $zip = new ZipArchive();
+    $zip->open($zfile, ZipArchive::CREATE);
+     
+     foreach ($_REQUEST['pdf'] as $key => $value) 
+     {
+         $arr = explode("/", $value);
+         $fname = $arr[count($arr) - 1];
+         $zip->addFile($value, $fname);
+     }
+
+ 
+    $zip->close();
+
+
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $zfile);
+    $size = filesize($zfile);
+    $name = basename($zfile);
+     
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+        // cache settings for IE6 on HTTPS
+        header('Cache-Control: max-age=120');
+        header('Pragma: public');
+    } else {
+        header('Cache-Control: private, max-age=120, must-revalidate');
+        header("Pragma: no-cache");
+    }
+    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // long ago
+    header("Content-Type: $mimeType");
+    header('Content-Disposition: attachment; filename="' . $name . '";');
+    header("Accept-Ranges: bytes");
+    header('Content-Length: ' . filesize($zfile));
+     
+    print readfile($zfile);
+    exit;
+    
+}

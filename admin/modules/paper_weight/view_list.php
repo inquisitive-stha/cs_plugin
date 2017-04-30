@@ -4,7 +4,7 @@ template_start('Paper Weight', 'Add New', 'javascript: doAddNew();');
 <table class="wp-list-table widefat fixed striped pages">
     <thead>
         <tr>
-            <td>
+            <td style="width:200px;">
                 Weight
             </td>
             <td style="width:200px;">
@@ -19,8 +19,8 @@ template_start('Paper Weight', 'Add New', 'javascript: doAddNew();');
             ?>
         <tr id="tr-<?php echo $l->id; ?>">
             <th>                
-                <input type="text" disabled class="db_weight form-control percent_50" value="<?php echo $l->weight; ?>" />
-                <input type="hidden" class="db_id" value="<?php echo $l->id; ?>" />
+                <input   style="width: 50px; float: left;" type="text" disabled class="db_weight form-control percent_50" value="<?php echo $l->weight; ?>" ><span class="gms">gms</span>
+                <input type="hidden" class="db_id" value="<?php echo $l->id; ?>"
             </th>
             <th><a href="#" onclick="doEdit(this); return false;" class="btn btn-info" tr_id="tr-<?php echo $l->id; ?>">Edit</a>
                 &nbsp;|&nbsp;

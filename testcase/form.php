@@ -5,15 +5,21 @@ include_once(COPYSHOP_ROOT."admin/modules/paper_weight/model.php");
 include_once(COPYSHOP_ROOT."admin/modules/printing_cost/model.php");
 include_once(COPYSHOP_ROOT."admin/modules/task/model.php");
 include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
+include_once(COPYSHOP_ROOT."admin/modules/label/model.php");
 
         $papercost = PaperCostModel::getAll();
         $printingcost = PrintingCostModel::getAll();
         $format = PaperFormatModel::getAll();
         $weight = PaperWeightModel::getAll();
         $task = TaskModel::getAll();
+        $label = LabelModel::getAll();
+// p($label);
+// exit();
 
 ?>
 <div class="content-box-large">
+    <div class="row">
+    <div class="container-fluid col-md-8">
     <div class="panel-heading">
         <div class="panel-title">Shopping Cart</div>
 
@@ -22,7 +28,7 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
         <form action="">
             <fieldset>
                 <div class="form-group">
-                    <label>Paper Format</label>
+                    <label><?php echo getlabel('PAPER_FORMAT');?></label>
                     <!--<input class="form-control" placeholder="Enter Paper Format" type="text">-->
                     
                     <select class="form-control " name="format_id">
@@ -38,7 +44,7 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
                     
                 </div>
                 <div class="form-group">
-                    <label>Paper Weight</label>
+                    <label><?php echo getlabel('PAPER_WEIGHT');?></label>
                     
                     <select class="form-control " name="weight_id">
                         <?php
@@ -53,19 +59,19 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
 
                 </div>
                 <div class="form-group">
-                    <label>No. of Pages</label>
+                    <label><?php echo getlabel('NO_OF_PAGES');?></label>
                     
                     <input value="1" class="form-control" name="num_pages" placeholder="Enter Total No. of pages" type="text">
 
                 </div>
                 
                 <div class="form-group">
-                    <label>Print on</label>
+                    <label><?php echo getlabel('PRINT_ON');?></label>
                     
                     <select class=" form-control " name="sides">
                         
-                            <option value="1" ><?php echo key_value('SINGLE_SIDE');?></option>
-                            <option value="2" ><?php echo key_value('DOUBLE_SIDE');?></option>
+                            <option value="1" ><?php echo getlabel('SINGLE_SIDE');?></option>
+                            <option value="2" ><?php echo getlabel('DOUBLE_SIDE');?></option>
                             
                         }
                         ?>
@@ -74,11 +80,11 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
                 </div>
                 
                 <div class="form-group" id="double_side_options" style="display:none;">
-                    <label>Flip type</label>
+                    <label><?php echo getlabel('FILE_TYPE');?></label>
                     
                     <select class=" form-control " name="double_sides_options">
-                            <option value="1"><?php echo key_value('DOUBLE_SIDE_LONG');?></option>
-                            <option value="2" ><?php echo key_value('DOUBLE_SIDE_SHORT');?></option>
+                            <option value="1"><?php echo getlabel('DOUBLE_SIDE_LONG');?></option>
+                            <option value="2" ><?php echo getlabel('DOUBLE_SIDE_SHORT');?></option>
                             
                         }
                         ?>
@@ -87,7 +93,7 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
                 </div>
                 
                 <div class="form-group">
-                    <label>Printing Types</label>
+                    <label><?php echo getlabel('PRINTING_TYPES');?></label>
                     
                     <select class="form-control " name="type">
                         
@@ -99,14 +105,14 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
                 </div>
                 
                 <div class="form-group">
-                    <label>No. of Piece</label>
+                    <label><?php echo getlabel('NO_OF_PIECE');?></label>
                     
                     <input value="1" class="form-control " name="pcs" placeholder="Enter Total No. of Pieces" type="text">
 
                 </div>
                 
                 <div class="form-group">
-                    <label>Additional Task</label>
+                    <label><?php echo getlabel('ADDITIONAL_TASK');?></label>
                     <!--<input class="form-control" placeholder="Enter Paper Format" type="text">-->
                     
                     
@@ -123,7 +129,7 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
                     
                 </div>
                 <div class="form-group">
-                    <label>Print On Cover</label>
+                    <label><?php echo getlabel('PRINT_ON_COVER');?></label>
                     <!--<input class="form-control" placeholder="Enter Paper Format" type="text">-->
                     
                     <select class="form-control " name="print_on_cover">
@@ -146,6 +152,12 @@ include_once(COPYSHOP_ROOT."admin/modules/task_price/model.php");
             <span id="m_total"></span>
         </form>
     </div>
+    </div>
+    <div class="container-fluid col-md-4">
+            llllllll
+    </div>
+    </div>
+
 </div>
 
 <script type="text/javascript">

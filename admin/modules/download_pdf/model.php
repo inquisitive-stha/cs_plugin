@@ -1,11 +1,11 @@
 <?php
 
-class LabelModel
+class DeliveryCostModel
 {
     static function getAll()
     {
         global $wpdb;
-        $sql = 'SELECT * FROM copy_label ORDER BY l_key ASC';
+        $sql = 'SELECT * FROM copy_delivery_cost ORDER BY order_total ASC';
         return $wpdb->get_results($sql);
     }
 }

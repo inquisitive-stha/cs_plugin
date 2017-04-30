@@ -108,6 +108,7 @@ class Copyshop_Admin {
         public function admin_menu()
         {
             add_menu_page('CopyShop General Settings', 'CopyShop', 'manage_options', 'copyshop_main', 'copyshop_main');
+            add_submenu_page('copyshop_main', 'Download PDF', 'Download PDF', 'manage_options', 'copyshop_pdf', 'copyshop_pdf');
             //add_submenu_page('copyshop_settings', 'Paper Format', 'Paper Format', 'manage_options', 'copyshop_paper_format', 'copyshop_paper_format');
             //add_submenu_page('copyshop_settings', 'Paper Weight', 'Paper Weight', 'manage_options', 'copyshop_paper_weight', 'copyshop_paper_weight');
 //            add_submenu_page('copyshop_settings', 'Printing Costs', 'Printing Costs', 'manage_options', 'copyshop_printing_cost', 'copyshop_printing_cost');
@@ -152,6 +153,9 @@ class Copyshop_Admin {
             
             add_action("wp_ajax_savelabel", "doSaveLabel");
             add_action("wp_ajax_deletelabel", "doDeleteLabel");
+
+            add_action("wp_ajax_downloadpdf", "doDownloadPDF");
+            add_action("wp_ajax_nopriv_downloadpdf", "doDownloadPDF");
             
            // add_action("wp_ajax_nopriv_saveformat", "doSaveFormat");
             // add_action("wp_ajax_nopriv_deleteformat", "doSaveFormat");

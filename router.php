@@ -44,3 +44,7 @@ function copyshop_main()
 {
     include_once("admin/modules/main/controller.php");
 }
+function copyshop_pdf()
+{
+    include_once("admin/modules/download_pdf/controller.php");
+}
